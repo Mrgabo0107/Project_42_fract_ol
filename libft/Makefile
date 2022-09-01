@@ -44,7 +44,10 @@ CYAN        = \033[1;36m
 
 ### RULES ###
 
-all:		$(NAME)
+all: tmp $(NAME)
+
+tmp:
+	@mkdir -p objs
 
 $(NAME):	$(OBJS)
 		ar rcs $(NAME) $(OBJS)
