@@ -61,6 +61,7 @@ void	guide_image(t_fractol *fr)
 	mlx_string_put(fr->mlx, fr->win, 26, 600, WHT, "Boundary");
 	mlx_string_put(fr->mlx, fr->win, 35, 615, WHT, "Reset");
 	mlx_string_put(fr->mlx, fr->win, 37, 630, WHT, "Zoom");
+	mlx_string_put(fr->mlx, fr->win, 37, 645, WHT, "Color");
 	mlx_string_put(fr->mlx, fr->win, 180, 540, WHT - 0x505000, "Arrows");
 	mlx_string_put(fr->mlx, fr->win, 180, 555, WHT - 0x505000, "-/+");
 	mlx_string_put(fr->mlx, fr->win, 180, 570, WHT - 0x505000, "F1/F2");
@@ -68,6 +69,7 @@ void	guide_image(t_fractol *fr)
 	mlx_string_put(fr->mlx, fr->win, 180, 600, WHT - 0x505000, "F5/F6");
 	mlx_string_put(fr->mlx, fr->win, 180, 615, WHT - 0x505000, "Space");
 	mlx_string_put(fr->mlx, fr->win, 180, 630, WHT - 0x505000, "Scroll");
+	mlx_string_put(fr->mlx, fr->win, 160, 645, WHT - 0x505000, "Mouse buttons");
 }
 
 void	my_mlx_pixel_put(t_fractol *fr, int x, int y, int color)
