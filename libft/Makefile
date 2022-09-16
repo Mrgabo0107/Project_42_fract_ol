@@ -29,8 +29,7 @@ SRC_PATH = sources
 
 SOURCES	= 	ft_strcmp.c ft_atof.c ft_isdigit.c ft_substr.c ft_strchr.c\
 		ft_strlen.c ft_strdup.c ft_itoa.c ft_strjoin.c ft_ftoa.c\
-		ft_putstr_fd.c
-			
+		ft_putstr_fd.c ft_putchar_fd.c
 
 ### Objects ###
 

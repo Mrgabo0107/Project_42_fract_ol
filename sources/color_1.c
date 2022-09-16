@@ -34,6 +34,8 @@ unsigned int	*rgb_sizeby(unsigned int *rgb, int c)
 	int				i;
 
 	i = 0;
+	if (!rgb)
+		return (NULL);
 	rgbc = (unsigned int *)malloc(sizeof(unsigned int) * 3);
 	if (!rgbc)
 		return (NULL);
@@ -51,6 +53,8 @@ unsigned int	*rgb_sizeby_div(unsigned int *rgb, int c)
 	int				i;
 
 	i = 0;
+	if (!rgb)
+		return (NULL);
 	rgbc = (unsigned int *)malloc(sizeof(unsigned int) * 3);
 	if (!rgbc)
 		return (NULL);
@@ -68,6 +72,8 @@ unsigned int	*rgb_rest(unsigned int *rgb1, unsigned int *rgb2)
 	int				i;
 
 	i = 0;
+	if (!rgb1 || !rgb2)
+		return (NULL);
 	rgb = (unsigned int *)malloc(sizeof(unsigned int) * 3);
 	if (!rgb)
 		return (NULL);

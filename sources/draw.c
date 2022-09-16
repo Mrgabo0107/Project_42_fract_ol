@@ -19,6 +19,8 @@ void	ft_draw_fractol(t_fractol *fr)
 	ac = fr->ac;
 	ag = fr->ag;
 	fr->matrix = init_pixel_matrix();
+	if (fr->matrix == NULL)
+		error_5(fr);
 	fr->matrix = ft_fill_matrix(fr, fr->matrix);
 	ft_set_draw(fr, ac, ag);
 	screen_controls(fr);
@@ -56,9 +58,13 @@ void	screen_controls(t_fractol *fr)
 	mlx_string_put(fr->mlx, fr->win, 95, 20, BLU + 0x505000, "PARAMETERS");
 	mlx_string_put(fr->mlx, fr->win, 10, 45, WHT, "Iterations = ");
 	iter = ft_itoa(fr->iter);
+	if (iter == NULL)
+		error_6(fr);
 	mlx_string_put(fr->mlx, fr->win, 95, 45, WHT - 0x505000, iter);
 	mlx_string_put(fr->mlx, fr->win, 10, 60, WHT, "Boundary = ");
 	cota = ft_ftoa(fr->cota);
+	if (cota == NULL)
+		error_6s2(fr, iter);
 	mlx_string_put(fr->mlx, fr->win, 95, 60, WHT - 0x505000, cota);
 	if (fr->ctrl == 2 || fr->ctrl == 1)
 		screen_mj(fr);

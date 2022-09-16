@@ -49,6 +49,9 @@ SOURCES =	main.c\
 		events.c\
 		color_1.c\
 		color_2.c\
+		error_1.c\
+		error_2.c\
+		error_3.c
 		
 ### Objects ###
 

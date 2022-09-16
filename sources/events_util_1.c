@@ -34,11 +34,20 @@ void	ft_mod_inip(int key, t_fractol *fr)
 void	ft_reinit(t_fractol *fr)
 {
 	if (fr->ctrl == 1)
+	{
+		free(fr->pallete);
 		ft_init_mdbrot(fr);
+	}
 	else if (fr->ctrl == 2)
+	{
+		free(fr->pallete);
 		ft_init_julia(fr, fr->ag);
+	}
 	else if (fr->ctrl == 3)
+	{
+		free(fr->pallete);
 		ft_init_newton(fr);
+	}
 }
 
 void	zoom(int button, int x, int y, t_fractol *fr)
@@ -79,4 +88,6 @@ void	ch_color(int button, t_fractol *fr)
 	if (fr->col_ctr == 0)
 		fr->col_ctr = 3;
 	fr->pallete = get_pal(fr->col_ctr);
+	if (fr->pallete == NULL)
+		error_4(fr);
 }

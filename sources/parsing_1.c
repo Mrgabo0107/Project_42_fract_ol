@@ -28,19 +28,15 @@ int	ft_check_ag(int ac, char **ag)
 int	ft_check_m(int ac, char **ag)
 {
 	int		i;
-	char	*cont;
 
-	cont = NULL;
 	i = 2;
 	while (i < ac)
 	{
 		if (ft_check_double(ag[i]) != 1)
 		{
-			cont = ft_itoa(i);
 			ft_putstr_fd("Error in argument ", 1);
-			ft_putstr_fd(cont, 1);
+			ft_putchar_fd(i + '0', 1);
 			ft_putstr_fd(":\n", 1);
-			free(cont);
 			return (error_message(2));
 		}
 		i++;
@@ -51,9 +47,7 @@ int	ft_check_m(int ac, char **ag)
 int	ft_check_j(int ac, char **ag)
 {
 	int		i;
-	char	*cont;
 
-	cont = NULL;
 	if (ft_check_complex(ag[2]) != 1)
 	{
 		ft_putstr_fd("Error in argument 2:\n", 1);
@@ -64,11 +58,9 @@ int	ft_check_j(int ac, char **ag)
 	{
 		if (ft_check_double(ag[i]) != 1)
 		{
-			cont = ft_itoa(i);
 			ft_putstr_fd("Error in argument ", 1);
-			ft_putstr_fd(cont, 1);
+			ft_putchar_fd(i + '0', 1);
 			ft_putstr_fd(":\n", 1);
-			free(cont);
 			return (error_message(2));
 		}
 		i++;
@@ -79,19 +71,15 @@ int	ft_check_j(int ac, char **ag)
 int	ft_check_n(int ac, char **ag)
 {
 	int		i;
-	char	*cont;
 
 	i = 2;
-	cont = NULL;
 	while (i < ac)
 	{
 		if (ft_check_complex(ag[i]) != 1)
 		{
-			cont = ft_itoa(i);
 			ft_putstr_fd("Error in argument ", 1);
-			ft_putstr_fd(cont, 1);
+			ft_putchar_fd(i + '0', 1);
 			ft_putstr_fd(":\n", 1);
-			free(cont);
 			return (error_message(3));
 		}
 		i++;
@@ -104,6 +92,8 @@ int	ft_check_double(char *s)
 	int	i;
 	int	p_ctl;
 
+	if (!s)
+		return (0);
 	i = 0;
 	p_ctl = 0;
 	if (s[0] == '+' || s[0] == '-')

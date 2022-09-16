@@ -15,9 +15,17 @@ void	ft_init_fractol(t_fractol *fr, int ctrl, int argc, char **argv)
 {
 	fr->ac = argc;
 	fr->ag = ft_get_coef(argc, argv);
+	if (fr->ag == NULL)
+		error_0(fr);
 	fr->mlx = mlx_init();
+	if (fr->mlx == NULL)
+		error_1(fr);
 	fr->win = mlx_new_window(fr->mlx, WX, WY, "fract'ol");
+	if (fr->win == NULL)
+		error_2(fr);
 	fr->img = mlx_new_image(fr->mlx, IX, IY);
+	if (fr->img == NULL)
+		error_3(fr);
 	fr->adr = mlx_get_data_addr(fr->img, &fr->bpp, &fr->llen, &fr->endi);
 	fr->ctrl = ctrl;
 	if (ctrl == 1)
@@ -49,6 +57,8 @@ void	ft_init_mdbrot(t_fractol *fr)
 {
 	fr->col_ctr = 1;
 	fr->pallete = get_pal(fr->col_ctr);
+	if (fr->pallete == NULL)
+		error_4(fr);
 	fr->iter = 70;
 	fr->miniter = 30;
 	fr->min_x = -2;
@@ -67,8 +77,10 @@ void	ft_init_mdbrot(t_fractol *fr)
 
 void	ft_init_julia(t_fractol *fr, char **ag)
 {
-	fr->col_ctr = 1;
+	fr->col_ctr = 0;
 	fr->pallete = get_pal(fr->col_ctr);
+	if (fr->pallete == NULL)
+		error_4(fr);
 	fr->iter = 60;
 	fr->miniter = 30;
 	fr->min_x = -2;
@@ -89,6 +101,8 @@ void	ft_init_newton(t_fractol *fr)
 {
 	fr->col_ctr = 2;
 	fr->pallete = get_pal(fr->col_ctr);
+	if (fr->pallete == NULL)
+		error_4(fr);
 	fr->iter = 17;
 	fr->miniter = 4;
 	fr->min_x = -4;

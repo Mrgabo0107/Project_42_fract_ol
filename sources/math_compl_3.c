@@ -11,28 +11,6 @@
 /* ************************************************************************** */
 #include "../includes/fractol.h"
 
-t_complex	*get_cplx_cf(int ac, char **ag)
-{
-	t_complex	*coef;
-	int			i;
-
-	i = 0;
-	if (ac > 2)
-	{
-		coef = (t_complex *)malloc(sizeof(t_complex) * (ac - 2));
-		if (!coef)
-			return (NULL);
-		while (i < ac - 2)
-		{
-			coef[i] = ft_get_complex(ag[i + 2]);
-			i++;
-		}
-	}
-	else
-		return (ft_stndr_roots());
-	return (coef);
-}
-
 unsigned int	absolute_v_int(int n)
 {
 	int	res;

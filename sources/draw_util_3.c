@@ -18,12 +18,16 @@ void	screen_mj(t_fractol *fr)
 
 	re = ft_ftoa(fr->ini_p.r);
 	im = ft_ftoa(fr->ini_p.i);
-	mlx_string_put(fr->mlx, fr->win, 10, 75, WHT, "Init point(r) = ");
-	mlx_string_put(fr->mlx, fr->win, 112, 75, WHT - 0x505000, re);
-	mlx_string_put(fr->mlx, fr->win, 10, 90, WHT, "Init point(i) = ");
-	mlx_string_put(fr->mlx, fr->win, 112, 90, WHT - 0x505000, im);
-	free(re);
-	free(im);
+	if (re != NULL && im != NULL)
+	{
+		mlx_string_put(fr->mlx, fr->win, 10, 75, WHT, "Init point(r) = ");
+		mlx_string_put(fr->mlx, fr->win, 112, 75, WHT - 0x505000, re);
+		mlx_string_put(fr->mlx, fr->win, 10, 90, WHT, "Init point(i) = ");
+		mlx_string_put(fr->mlx, fr->win, 112, 90, WHT - 0x505000, im);
+		free_scr_arg(re, im);
+	}
+	else
+		free_scr_arg(re, im);
 }
 
 void	limits_image(t_fractol *fr)
@@ -37,18 +41,20 @@ void	limits_image(t_fractol *fr)
 	maxx = ft_ftoa(fr->max_x);
 	miny = ft_ftoa(fr->min_y);
 	maxy = ft_ftoa(fr->max_y);
-	mlx_string_put(fr->mlx, fr->win, 40, 280, WHT, "Min x = ");
-	mlx_string_put(fr->mlx, fr->win, 42, 295, WHT - 0x505000, minx);
-	mlx_string_put(fr->mlx, fr->win, 155, 280, WHT, "Max x = ");
-	mlx_string_put(fr->mlx, fr->win, 157, 295, WHT - 0x505000, maxx);
-	mlx_string_put(fr->mlx, fr->win, 96, 320, WHT, "Min y = ");
-	mlx_string_put(fr->mlx, fr->win, 98, 335, WHT - 0x505000, miny);
-	mlx_string_put(fr->mlx, fr->win, 96, 240, WHT, "Max y = ");
-	mlx_string_put(fr->mlx, fr->win, 98, 255, WHT - 0x505000, maxy);
-	free(minx);
-	free(maxx);
-	free(miny);
-	free(maxy);
+	if (minx && miny && maxx && maxy)
+	{
+		mlx_string_put(fr->mlx, fr->win, 40, 280, WHT, "Min x = ");
+		mlx_string_put(fr->mlx, fr->win, 42, 295, WHT - 0x505000, minx);
+		mlx_string_put(fr->mlx, fr->win, 155, 280, WHT, "Max x = ");
+		mlx_string_put(fr->mlx, fr->win, 157, 295, WHT - 0x505000, maxx);
+		mlx_string_put(fr->mlx, fr->win, 96, 320, WHT, "Min y = ");
+		mlx_string_put(fr->mlx, fr->win, 98, 335, WHT - 0x505000, miny);
+		mlx_string_put(fr->mlx, fr->win, 96, 240, WHT, "Max y = ");
+		mlx_string_put(fr->mlx, fr->win, 98, 255, WHT - 0x505000, maxy);
+		free_lim_arg(minx, maxx, miny, maxy);
+	}
+	else
+		free_lim_arg(minx, maxx, miny, maxy);
 }
 
 void	guide_image(t_fractol *fr)

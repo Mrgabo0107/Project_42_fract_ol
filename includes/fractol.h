@@ -6,7 +6,7 @@
 /*   By: gamoreno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 01:43:21 by gamoreno          #+#    #+#             */
-/*   Updated: 2022/09/01 02:21:39 by gamoreno         ###   ########.fr       */
+/*   Updated: 2022/09/16 19:57:13 by gamoreno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int				ft_check_j(int ac, char **ag);
 int				ft_check_n(int ac, char **ag);
 int				ft_check_double(char *s);
 int				ft_check_complex(char *s);
+char			*search_sep(char *s);
 int				error_message(int i);
 void			init_mesagge(void);
 void			init_mesagge_m(void);
@@ -96,6 +97,7 @@ double			*get_coef(int ac, char **ag);
 double			*stndr_coef(void);
 int				ft_asign_root(t_fractol *fr, t_complex c,
 					int nroot, t_complex *root);
+t_complex		*get_cplx_cf(int ac, char **ag);
 t_complex		*ft_stndr_roots(void);
 
 /*-----------math_complements--------*/
@@ -109,7 +111,6 @@ t_complex		ft_cpow(t_complex bas, int pow);
 t_complex		ft_poly_nc(t_complex c, double *coef, int numc);
 t_complex		ft_mono_mult(t_complex c, t_complex *root, int numr);
 t_complex		ft_deriv_mono(t_complex c, t_complex *root, int numr);
-t_complex		*get_cplx_cf(int ac, char **ag);
 unsigned int	absolute_v_int(int n);
 unsigned int	absolute_v_lint(long int n);
 int				ten_pow(int c);
@@ -140,5 +141,20 @@ unsigned int	*get_pal(int c);
 unsigned int	*pallete_0(void);
 unsigned int	*pallete_1(void);
 unsigned int	*pallete_2(void);
+
+/*--------------errors-------------------*/
+void			error_0(t_fractol *fr);
+void			error_1(t_fractol *fr);
+void			error_2(t_fractol *fr);
+void			error_3(t_fractol *fr);
+void			error_4(t_fractol *fr);
+void			error_5(t_fractol *fr);
+void			error_6(t_fractol *fr);
+void			error_6s(t_fractol *fr, unsigned int *a);
+void			error_6s2(t_fractol *fr, char *a);
+int				error_7(void);
+int				error_7i(char *re);
+void			free_lim_arg(char *s1, char *s2, char *s3, char *s4);
+void			free_scr_arg(char *s1, char *s2);
 
 #endif

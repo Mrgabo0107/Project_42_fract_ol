@@ -11,6 +11,32 @@
 /* ************************************************************************** */
 #include "../includes/fractol.h"
 
+void	init_mesagge_j(void)
+{
+	ft_putstr_fd("-> For Julia:\n", 1);
+	ft_putstr_fd("   Fract'ol shows the Julia set by using ", 1);
+	ft_putstr_fd("a complex constant \"P\" passed\n", 1);
+	ft_putstr_fd("   as the second executable's parameter, ", 1);
+	ft_putstr_fd("this parameter has to by set\n", 1);
+	ft_putstr_fd("   always in the format: <double>+<double>i ", 1);
+	ft_putstr_fd("or <double>-<double>i, and\n", 1);
+	ft_putstr_fd("   the program iterates over \"P + Z^2\" ", 1);
+	ft_putstr_fd("by default, where P can by \n", 1);
+	ft_putstr_fd("   modified by the program's key controls, ", 1);
+	ft_putstr_fd("and the polynomial Z^2 can\n", 1);
+	ft_putstr_fd("   be remplaced by any zero constant polynomial ", 1);
+	ft_putstr_fd("using the following\n", 1);
+	ft_putstr_fd("   parameters like a doubles that will serve as ", 1);
+	ft_putstr_fd("coefficients of another\n", 1);
+	ft_putstr_fd("   polynomial. For example, starting ", 1);
+	ft_putstr_fd("fract'ol like this:\n\n", 1);
+	ft_putstr_fd("   \t./fractol \"julia\" \"-0.4-0.6i\" ", 1);
+	ft_putstr_fd("\"1\" \"-0.6\" \"3.2\" \"0\" \"-9.5\"\n\n", 1);
+	ft_putstr_fd("   will iterate over a complex number Z ", 1);
+	ft_putstr_fd("in the polynomial:\n\n", 1);
+	ft_putstr_fd("   \t\t (-0.4-0.6i) + Z - 0.6*Z^2 + 3.2*Z^3 - 9.5*Z^5\n\n", 1);
+}
+
 void	init_mesagge_n(void)
 {
 	ft_putstr_fd("-> For Newton:\n", 1);

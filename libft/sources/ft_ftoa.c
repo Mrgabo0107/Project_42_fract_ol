@@ -35,14 +35,18 @@ static double	decimal_move(double d, int n)
 
 static void	free_strings(char *s1, char *s2)
 {
-	free(s1);
-	free(s2);
+	if (s1 != NULL)
+		free(s1);
+	if (s2 != NULL)
+		free(s2);
 }
 
 static char	*separator(char *entera)
 {
 	char	*temp;
 
+	if (entera == NULL)
+		return (NULL);
 	temp = ft_strjoin(entera, ".");
 	free (entera);
 	return (temp);
@@ -57,7 +61,9 @@ char	*ft_ftoa(double n)
 	double	p_decimal;
 
 	p_decimal = modf(n, &p_entera);
-	entera = ft_itoa(p_entera);
+	entera = ft_itoa((int)p_entera);
+	if (!entera)
+		return (NULL);
 	if (p_decimal < 0.0 && p_entera == 0.0)
 		entera = case_cero(entera);
 	if (p_decimal < 0.0)

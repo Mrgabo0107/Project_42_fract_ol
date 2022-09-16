@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parcing_2.c                                        :+:      :+:    :+:   */
+/*   parsing_2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gamoreno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 04:49:55 by gamoreno          #+#    #+#             */
-/*   Updated: 2022/08/17 04:51:16 by gamoreno         ###   ########.fr       */
+/*   Updated: 2022/09/16 20:04:33 by gamoreno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/fractol.h"
@@ -20,24 +20,36 @@ int	ft_check_complex(char *s)
 
 	if (s[0] == '+' || s[0] == '-')
 		s++;
-	sep = ft_strchr(s, '+');
-	if (sep == NULL)
-	{
-		sep = ft_strchr(s, '-');
-		if (sep == NULL)
-			return (0);
-	}
+	sep = search_sep(s);
+	if (!sep)
+		return (0);
 	imag_c = ft_strchr(s, 'i');
 	if (imag_c == NULL || (imag_c[0] == 'i' && imag_c[1] != '\0'))
 		return (0);
 	re = ft_substr(s, 0, sep - s);
+	if (!re)
+		return (error_7());
 	im = ft_substr(sep, 1, imag_c - sep - 1);
+	if (!im)
+		return (error_7i(re));
 	if ((ft_check_double(re) != 1 || ft_check_double(im) != 1)
 		|| ft_strcmp(im, "") == 0)
 		return (0);
 	free(re);
 	free(im);
 	return (1);
+}
+
+char	*search_sep(char *s)
+{
+	char	*sep;
+
+	sep = ft_strchr(s, '+');
+	if (sep == NULL)
+	{
+		sep = ft_strchr(s, '-');
+	}
+	return (sep);
 }
 
 int	error_message(int i)
@@ -100,30 +112,4 @@ void	init_mesagge_m(void)
 	ft_putstr_fd("   will iterate in the same way on the:\n\n", 1);
 	ft_putstr_fd("   \t\t C + 0.2*Z -0.1*Z^2 + 2*Z^4 - 3*Z^5\n\n", 1);
 	ft_putstr_fd("   polynomial.\n\n", 1);
-}
-
-void	init_mesagge_j(void)
-{
-	ft_putstr_fd("-> For Julia:\n", 1);
-	ft_putstr_fd("   Fract'ol shows the Julia set by using ", 1);
-	ft_putstr_fd("a complex constant \"P\" passed\n", 1);
-	ft_putstr_fd("   as the second executable's parameter, ", 1);
-	ft_putstr_fd("this parameter has to by set\n", 1);
-	ft_putstr_fd("   always in the format: <double>+<double>i ", 1);
-	ft_putstr_fd("or <double>-<double>i, and\n", 1);
-	ft_putstr_fd("   the program iterates over \"P + Z^2\" ", 1);
-	ft_putstr_fd("by default, where P can by \n", 1);
-	ft_putstr_fd("   modified by the program's key controls, ", 1);
-	ft_putstr_fd("and the polynomial Z^2 can\n", 1);
-	ft_putstr_fd("   be remplaced by any zero constant polynomial ", 1);
-	ft_putstr_fd("using the following\n", 1);
-	ft_putstr_fd("   parameters like a doubles that will serve as ", 1);
-	ft_putstr_fd("coefficients of another\n", 1);
-	ft_putstr_fd("   polynomial. For example, starting ", 1);
-	ft_putstr_fd("fract'ol like this:\n\n", 1);
-	ft_putstr_fd("   \t./fractol \"julia\" \"-0.4-0.6i\" ", 1);
-	ft_putstr_fd("\"1\" \"-0.6\" \"3.2\" \"0\" \"-9.5\"\n\n", 1);
-	ft_putstr_fd("   will iterate over a complex number Z ", 1);
-	ft_putstr_fd("in the polynomial:\n\n", 1);
-	ft_putstr_fd("   \t\t (-0.4-0.6i) + Z - 0.6*Z^2 + 3.2*Z^3 - 9.5*Z^5\n\n", 1);
 }

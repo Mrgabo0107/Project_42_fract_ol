@@ -6,7 +6,7 @@
 /*   By: gamoreno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 07:56:23 by gamoreno          #+#    #+#             */
-/*   Updated: 2022/09/01 04:12:57 by gamoreno         ###   ########.fr       */
+/*   Updated: 2022/09/08 19:17:04 by gamoreno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/fractol.h"
@@ -90,10 +90,16 @@ unsigned int	separate(t_fractol *fr, t_pixel p, int n_root)
 	if (n_root > 1)
 	{
 		curr1 = ft_get_rgb(fr->pallete[4]);
+		if (curr1 == NULL)
+			error_6(fr);
 		curr2 = ft_get_rgb(fr->pallete[11]);
+		if (curr2 == NULL)
+			error_6s(fr, curr1);
 		res = res_sep(curr1, curr2, p.c_ctrl, n_root);
 		free(curr1);
 		free(curr2);
+		if (res == 0xFFFFFFFF)
+			error_6(fr);
 	}
 	else
 		res = fr->pallete[3];
@@ -112,10 +118,17 @@ unsigned int	res_sep(unsigned int *c1, unsigned int *c2, int ctr, int root)
 	div = rgb_sizeby_div(dif, root - 1);
 	op = rgb_sizeby(div, ctr - 1);
 	sum = rgb_rest(c1, op);
-	res = rgb_to_int(sum);
-	free(dif);
-	free(div);
-	free(op);
-	free(sum);
+	if (sum == NULL)
+		res = 0xFFFFFFFF;
+	else
+		res = rgb_to_int(sum);
+	if (dif != NULL)
+		free(dif);
+	if (div != NULL)
+		free(div);
+	if (op != NULL)
+		free(op);
+	if (sum != NULL)
+		free(sum);
 	return (res);
 }

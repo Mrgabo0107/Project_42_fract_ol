@@ -30,4 +30,5 @@ char	*ft_itoa(int n);
 char	*ft_ftoa(double n);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	ft_putstr_fd(char *s, int fd);
+void	ft_putchar_fd(char c, int fd);
 #endif

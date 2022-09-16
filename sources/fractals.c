@@ -22,6 +22,8 @@ t_pixel	ft_mandelbrot(t_fractol *fr, t_pixel p, int ac, char **ag)
 	i = 0;
 	res = p;
 	coef = get_coef(ac, ag);
+	if (coef == NULL)
+		error_6(fr);
 	n_coef = ac - 2;
 	if (ac < 3)
 		n_coef = 2;
@@ -47,6 +49,8 @@ t_pixel	ft_julia(t_fractol *fr, t_pixel p, int ac, char **ag)
 	i = 0;
 	res = p;
 	coef = get_coef(ac, ag);
+	if (coef == NULL)
+		error_6(fr);
 	n_coef = ac - 3;
 	if (ac < 4)
 		n_coef = 2;
@@ -72,6 +76,8 @@ t_pixel	ft_newton(t_fractol *fr, t_pixel p, int ac, char **ag)
 	i = 0;
 	res = p;
 	roots = get_cplx_cf(ac, ag);
+	if (roots == NULL)
+		error_6(fr);
 	n_root = ac - 2;
 	if (ac < 3)
 		n_root = 3;

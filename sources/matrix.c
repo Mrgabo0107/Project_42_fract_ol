@@ -25,6 +25,11 @@ t_pixel	**init_pixel_matrix(void)
 		out[i] = (t_pixel *)malloc(sizeof(t_pixel) * IX);
 		if (!out[i])
 		{
+			while (i > 0)
+			{
+				free(out[i - 1]);
+				i--;
+			}
 			free(out);
 			return (NULL);
 		}
